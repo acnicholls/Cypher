@@ -1,0 +1,21 @@
+dev
+ this is the folder where the code is stored.
+prod
+ this is a compiled executable.  that doesn't actually work, at this point
+ 
+ 
+ dev/cypher_data
+  this folder contains the data classes used by the c# application
+ dev/cypher_database
+  this folder contains the testing database MDF and LDF files.
+ dev/cypher_info
+  this folder contains the global variables project
+ dev/cypher_interface
+  this folder contains the GUI project
+ dev/POOL
+  this folder contains the Open Source NLP processing code.
+  
+ prod/cypher
+  this folder contains a working executable.  you can encode a message.  decode doesn't work.
+ prod/cypher_database
+  this folder contains the database required for cypher to work.  Connection string is in app.config file.
