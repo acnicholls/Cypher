@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpEntropy", "SharpEntropy\SharpEntropy.csproj", "{BF0BF8B0-1894-4EDF-BF51-F370B063797E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleExample", "SimpleExample\SimpleExample.csproj", "{BB19C652-C4D8-4517-91D9-CBE57640FFD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishTokenizer", "EnglishTokenizer\EnglishTokenizer.csproj", "{9DED26CF-629B-4B12-B1BC-5C9573058304}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB19C652-C4D8-4517-91D9-CBE57640FFD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB19C652-C4D8-4517-91D9-CBE57640FFD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB19C652-C4D8-4517-91D9-CBE57640FFD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB19C652-C4D8-4517-91D9-CBE57640FFD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DED26CF-629B-4B12-B1BC-5C9573058304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DED26CF-629B-4B12-B1BC-5C9573058304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DED26CF-629B-4B12-B1BC-5C9573058304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DED26CF-629B-4B12-B1BC-5C9573058304}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

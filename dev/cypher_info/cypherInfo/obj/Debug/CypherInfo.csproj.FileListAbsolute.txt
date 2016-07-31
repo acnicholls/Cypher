@@ -1,0 +1,14 @@
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\acnicholls_info\acnichollsInfo\obj\Debug\ResolveAssemblyReference.cache
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\acnicholls_info\acnichollsInfo\bin\Debug\cypherinf.dll
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\acnicholls_info\acnichollsInfo\bin\Debug\cypherinf.pdb
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\acnicholls_info\acnichollsInfo\obj\Debug\cypherinf.dll
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\acnicholls_info\acnichollsInfo\obj\Debug\cypherinf.pdb
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\bin\Debug\cypherinf.dll
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\bin\Debug\cypherinf.pdb
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\obj\Debug\ResolveAssemblyReference.cache
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\obj\Debug\cypherinf.dll
+F:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\obj\Debug\cypherinf.pdb
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\bin\Debug\cypherinf.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\bin\Debug\cypherinf.pdb
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\obj\Debug\cypherinf.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\obj\Debug\cypherinf.pdb

@@ -1,0 +1,10 @@
+Warm Dry No_Umbrella
+Cold Dry No_Umbrella
+Cold Rainy Umbrella
+Cold Dry Umbrella
+Warm Dry No_Umbrella
+Cold Dry Early Umbrella
+Cold Rainy Early Umbrella
+Cold Dry Late No_Umbrella
+Warm Rainy Late No_Umbrella
+Warm Dry Late No_Umbrella

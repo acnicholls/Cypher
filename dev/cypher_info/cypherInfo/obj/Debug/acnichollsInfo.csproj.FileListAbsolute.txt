@@ -1,0 +1,5 @@
+F:\Project Folders\~!projectsWeb\acnicholls\dev\acnicholls_info\acnichollsInfo\bin\Debug\acninf.dll
+F:\Project Folders\~!projectsWeb\acnicholls\dev\acnicholls_info\acnichollsInfo\bin\Debug\acninf.pdb
+F:\Project Folders\~!projectsWeb\acnicholls\dev\acnicholls_info\acnichollsInfo\obj\Debug\ResolveAssemblyReference.cache
+F:\Project Folders\~!projectsWeb\acnicholls\dev\acnicholls_info\acnichollsInfo\obj\Debug\acninf.dll
+F:\Project Folders\~!projectsWeb\acnicholls\dev\acnicholls_info\acnichollsInfo\obj\Debug\acninf.pdb

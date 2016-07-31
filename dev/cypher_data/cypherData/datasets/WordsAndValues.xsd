@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WordsAndValues" targetNamespace="http://tempuri.org/WordsAndValues.xsd" xmlns:mstns="http://tempuri.org/WordsAndValues.xsd" xmlns="http://tempuri.org/WordsAndValues.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="cypherConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="cypherConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.cypher.data.Properties.Settings.GlobalReference.Default.cypherConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="WordsAndValues" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="WordsAndValues" msprop:Generator_UserDSName="WordsAndValues">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblWords" msprop:Generator_TableClassName="tblWordsDataTable" msprop:Generator_TableVarName="tabletblWords" msprop:Generator_TablePropName="tblWords" msprop:Generator_RowDeletingName="tblWordsRowDeleting" msprop:Generator_UserTableName="tblWords" msprop:Generator_RowChangingName="tblWordsRowChanging" msprop:Generator_RowEvHandlerName="tblWordsRowChangeEventHandler" msprop:Generator_RowDeletedName="tblWordsRowDeleted" msprop:Generator_RowEvArgName="tblWordsRowChangeEvent" msprop:Generator_RowChangedName="tblWordsRowChanged" msprop:Generator_RowClassName="tblWordsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fldWord_id" msprop:Generator_ColumnVarNameInTable="columnfldWord_id" msprop:Generator_ColumnPropNameInRow="fldWord_id" msprop:Generator_ColumnPropNameInTable="fldWord_idColumn" msprop:Generator_UserColumnName="fldWord_id" type="xs:string" minOccurs="0" />
+              <xs:element name="fldWord_word" msprop:Generator_ColumnVarNameInTable="columnfldWord_word" msprop:Generator_ColumnPropNameInRow="fldWord_word" msprop:Generator_ColumnPropNameInTable="fldWord_wordColumn" msprop:Generator_UserColumnName="fldWord_word" type="xs:string" minOccurs="0" />
+              <xs:element name="fldWord_value" msprop:Generator_ColumnVarNameInTable="columnfldWord_value" msprop:Generator_ColumnPropNameInRow="fldWord_value" msprop:Generator_ColumnPropNameInTable="fldWord_valueColumn" msprop:Generator_UserColumnName="fldWord_value" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

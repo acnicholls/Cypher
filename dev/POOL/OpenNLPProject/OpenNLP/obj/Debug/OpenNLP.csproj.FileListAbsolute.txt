@@ -1,0 +1,15 @@
+D:\Downloads\englishparsing_net2_0_src\OpenNLP\bin\Debug\OpenNLP.dll
+D:\Downloads\englishparsing_net2_0_src\OpenNLP\bin\Debug\OpenNLP.pdb
+D:\Downloads\englishparsing_net2_0_src\OpenNLP\bin\Debug\SharpEntropy.dll
+D:\Downloads\englishparsing_net2_0_src\OpenNLP\obj\Debug\OpenNLP.csprojResolveAssemblyReference.cache
+D:\Downloads\englishparsing_net2_0_src\OpenNLP\obj\Debug\OpenNLP.dll
+D:\Downloads\englishparsing_net2_0_src\OpenNLP\obj\Debug\OpenNLP.pdb
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Debug\OpenNLP.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Debug\OpenNLP.pdb
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Debug\SharpEntropy.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Debug\cypherinf.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\obj\Debug\OpenNLP.csprojResolveAssemblyReference.cache
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\obj\Debug\OpenNLP.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\obj\Debug\OpenNLP.pdb
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Debug\SharpEntropy.pdb
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Debug\cypherinf.pdb

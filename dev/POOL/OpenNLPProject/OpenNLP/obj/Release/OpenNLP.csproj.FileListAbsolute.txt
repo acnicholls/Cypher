@@ -1,0 +1,6 @@
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Release\OpenNLP.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Release\SharpEntropy.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Release\cypherinf.dll
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\bin\Release\cypherinf.pdb
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\obj\Release\OpenNLP.csprojResolveAssemblyReference.cache
+D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\OpenNLPProject\OpenNLP\obj\Release\OpenNLP.dll

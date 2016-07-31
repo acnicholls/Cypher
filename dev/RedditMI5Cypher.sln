@@ -1,0 +1,46 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CypherData", "cypher_data\cypherData\CypherData.csproj", "{89662E3A-AF30-421A-A55E-0F112BFB3DC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CypherInfo", "cypher_info\cypherInfo\CypherInfo.csproj", "{DA890D57-6BEC-460F-B5AB-56C093F72FC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CypherInterface", "cypher_Interface\cypherInterface\CypherInterface.csproj", "{07377681-9B98-46F8-BA24-A7B75842A504}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP", "POOL\OpenNLPProject\OpenNLP\OpenNLP.csproj", "{B70185DF-81FD-4417-914F-7C90E65E7D9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpEntropy", "POOL\SharpEntropyProject\SharpEntropy\SharpEntropy.csproj", "{BF0BF8B0-1894-4EDF-BF51-F370B063797E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89662E3A-AF30-421A-A55E-0F112BFB3DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89662E3A-AF30-421A-A55E-0F112BFB3DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89662E3A-AF30-421A-A55E-0F112BFB3DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89662E3A-AF30-421A-A55E-0F112BFB3DC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA890D57-6BEC-460F-B5AB-56C093F72FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA890D57-6BEC-460F-B5AB-56C093F72FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA890D57-6BEC-460F-B5AB-56C093F72FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA890D57-6BEC-460F-B5AB-56C093F72FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07377681-9B98-46F8-BA24-A7B75842A504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07377681-9B98-46F8-BA24-A7B75842A504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07377681-9B98-46F8-BA24-A7B75842A504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07377681-9B98-46F8-BA24-A7B75842A504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B70185DF-81FD-4417-914F-7C90E65E7D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B70185DF-81FD-4417-914F-7C90E65E7D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B70185DF-81FD-4417-914F-7C90E65E7D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B70185DF-81FD-4417-914F-7C90E65E7D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

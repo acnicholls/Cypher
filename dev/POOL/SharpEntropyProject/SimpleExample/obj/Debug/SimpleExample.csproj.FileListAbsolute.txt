@@ -1,0 +1,9 @@
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\bin\Debug\SimpleExample.exe
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\bin\Debug\SimpleExample.pdb
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\bin\Debug\SharpEntropy.dll
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\bin\Debug\SharpEntropy.pdb
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\obj\Debug\SimpleExample.csprojResolveAssemblyReference.cache
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\obj\Debug\SimpleExample.SimpleExample.resources
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\obj\Debug\SimpleExample.csproj.GenerateResource.Cache
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\obj\Debug\SimpleExample.exe
+D:\Downloads\sharpentropy_net2_0_source\SimpleExample\obj\Debug\SimpleExample.pdb
