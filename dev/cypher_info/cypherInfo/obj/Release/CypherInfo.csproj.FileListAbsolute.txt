@@ -1,2 +1,0 @@
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\bin\Release\cypherinf.dll
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_info\cypherInfo\obj\Release\cypherinf.dll

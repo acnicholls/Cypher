@@ -1,7 +1,0 @@
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_data\cypherData\bin\Release\cypherdat.dll.config
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_data\cypherData\bin\Release\cypherdat.dll
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_data\cypherData\bin\Release\cypherinf.dll
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_data\cypherData\bin\Release\OpenNLP.dll
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_data\cypherData\bin\Release\SharpEntropy.dll
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_data\cypherData\obj\Release\CypherData.csprojResolveAssemblyReference.cache
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\cypher_data\cypherData\obj\Release\cypherdat.dll
