@@ -12,3 +12,12 @@ D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProje
 D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProject\SharpEntropy\obj\Debug\SharpEntropy.dll
 D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProject\SharpEntropy\obj\Debug\SharpEntropy.pdb
 D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProject\SharpEntropy\obj\Debug\SharpEntropy.csprojResolveAssemblyReference.cache
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Debug\SharpEntropy.dll.config
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Debug\SharpEntropy.dll
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Debug\SharpEntropy.pdb
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Debug\SharpEntropyDoc.xml
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Debug\cypherinf.pdb
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\obj\Debug\SharpEntropy.csprojAssemblyReference.cache
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\obj\Debug\SharpEntropy.csproj.CopyComplete
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\obj\Debug\SharpEntropy.dll
+F:\projectFolders\cypher\Cypher\dev\POOL\SharpEntropyProject\SharpEntropy\obj\Debug\SharpEntropy.pdb

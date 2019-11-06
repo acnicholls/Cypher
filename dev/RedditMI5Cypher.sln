@@ -1,5 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CypherData", "cypher_data\cypherData\CypherData.csproj", "{89662E3A-AF30-421A-A55E-0F112BFB3DC6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CypherInfo", "cypher_info\cypherInfo\CypherInfo.csproj", "{DA890D57-6BEC-460F-B5AB-56C093F72FC1}"
@@ -9,6 +11,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenNLP", "POOL\OpenNLPProject\OpenNLP\OpenNLP.csproj", "{B70185DF-81FD-4417-914F-7C90E65E7D9F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpEntropy", "POOL\SharpEntropyProject\SharpEntropy\SharpEntropy.csproj", "{BF0BF8B0-1894-4EDF-BF51-F370B063797E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{867118A0-4A27-40BC-8419-97DF2D227F15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,7 +44,12 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B70185DF-81FD-4417-914F-7C90E65E7D9F} = {867118A0-4A27-40BC-8419-97DF2D227F15}
+		{BF0BF8B0-1894-4EDF-BF51-F370B063797E} = {867118A0-4A27-40BC-8419-97DF2D227F15}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {45218CB8-A1AC-464F-BCC7-BACE2BC005A0}
 	EndGlobalSection
 EndGlobal

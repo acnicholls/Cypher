@@ -34,7 +34,9 @@ namespace cypher.GUI
         {
             get 
             {
-                return this.lbWords.SelectedItem.ToString();
+                if(this.lbWords.SelectedIndices.Count > 0)
+                    return this.lbWords.SelectedItem.ToString();
+                return "";
             }
         }
 

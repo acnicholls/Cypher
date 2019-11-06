@@ -282,3 +282,6 @@ healthchecksdb
 MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# my app.config file -- can't release those into the wild.
+app.config

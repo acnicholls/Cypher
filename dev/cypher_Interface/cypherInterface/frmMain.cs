@@ -146,7 +146,6 @@ namespace cypher.GUI
             // 
             // txtOutputCode
             // 
-            this.txtOutputCode.Enabled = false;
             this.txtOutputCode.Location = new System.Drawing.Point(3, 179);
             this.txtOutputCode.Multiline = true;
             this.txtOutputCode.Name = "txtOutputCode";
@@ -185,7 +184,7 @@ namespace cypher.GUI
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(92, 22);
+            this.miExit.Size = new System.Drawing.Size(93, 22);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -222,9 +221,9 @@ namespace cypher.GUI
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.ClientSize = new System.Drawing.Size(582, 287);
+            this.Controls.Add(this.pnlEncrypt);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.pnlDecrypt);
-            this.Controls.Add(this.pnlEncrypt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mnuMain;
             this.MaximizeBox = false;

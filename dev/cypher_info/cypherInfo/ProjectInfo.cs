@@ -43,7 +43,7 @@ namespace cypher.info
 
 
 		// Program variables
-        public static LogTypeEnum ProjectLogType = LogTypeEnum.Database;
+        public static LogTypeEnum ProjectLogType = LogTypeEnum.File;
 		public static string ProjectLogProcedure = "cypher_insertLog";
 		public static string acnLogLocation = AppDomain.CurrentDomain.BaseDirectory.ToString() + @"\log";
 

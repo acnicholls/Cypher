@@ -59,6 +59,7 @@ namespace cypher.GUI
         {
             string tableName = "tblPermutations" + EncMess.ID.ToString();
             DialogResult result = DialogResult.Yes;
+            dialog = new frmDialog(true);
             dialog.Show(this);
             bool dialogClosed = false;
             bool tableComplete = false;
@@ -176,7 +177,7 @@ namespace cypher.GUI
 
         private void miCalc_Click(object sender, EventArgs e)
         {
-            if (dialog == null)
+            if (dialog == null | dialog.IsDisposed)
                 dialog = new frmDialog(false);
             bool dialogClosed = false;
             dialog.lblText.Text = "Calculating sentence probability of permutations...";

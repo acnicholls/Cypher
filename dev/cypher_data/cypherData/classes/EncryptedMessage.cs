@@ -72,6 +72,7 @@ namespace cypher.data.classes
 
         public void Save()
         {
+            // should try to take care of update here...?   
             try
             {
                 // add this message to the database
