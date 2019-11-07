@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using OpenNLP.Tools.Parser;
+//using OpenNLP.Tools.Parser;
+using opennlp.tools.sentdetect;
+using System.IO;
+using java.io;
+using System.Collections.Generic;
 
 namespace cypher.data.classes
 {
@@ -52,6 +56,7 @@ namespace cypher.data.classes
                 connection.Open();
                 cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "CreateTABLE", sqlsc, LogEnum.Debug);
                 command.ExecuteNonQuery();
+                connection.Close();
             }
             catch (Exception x)
             {
@@ -59,7 +64,10 @@ namespace cypher.data.classes
             }
             finally
             {
-                connection.Close();
+                if (connection.State != ConnectionState.Closed)
+                {
+                    connection.Close();
+                }
             }
         }
 
@@ -72,8 +80,6 @@ namespace cypher.data.classes
         /// <param name="permutations">the number of permutations to save</param>
         public static void FillPermutationsTable(string tableName, ArrayList itemList, int columnNo, double permutations)
         {
-            SqlConnection connection = new SqlConnection(info.ConnectionInfo.ConnectionString);
-            connection.Open();
             try
             {
                 double maxP = Math.Floor(permutations / itemList.Count);
@@ -97,7 +103,9 @@ namespace cypher.data.classes
                         SqlCommand command = connection.CreateCommand();
                         command.CommandType = CommandType.Text;
                         command.CommandText = strSQL;
+                        connection.Open();
                         command.ExecuteNonQuery();
+                        connection.Close();
                         // add one to the next ID
                         ID++;
                     }
@@ -110,8 +118,12 @@ namespace cypher.data.classes
             }
             finally
             {
-                connection.Close();
+                if (connection.State != ConnectionState.Closed)
+                {
+                    connection.Close();
+                }
             }
+
         }
 
         public static void DetectSentence(string tableName, double permutations)
@@ -123,7 +135,9 @@ namespace cypher.data.classes
                     cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "DetectSentence", "Loading Parser...", LogEnum.Message);
                     // first load the laguage processing tools
                     string modelPath = cypher.info.ProjectInfo.ModelLocation;
-                    EnglishTreebankParser parser = new EnglishTreebankParser(modelPath); // , true, false);
+                    var modelIn = new FileInputStream(Path.Combine(modelPath, "EnglishSD.nbin"));
+                    var model = new SentenceModel(modelIn);
+                    var sentenceDetector = new SentenceDetectorME(model);
                     // now load sentences from the database
                     cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "DetectSentence", "Parser Loaded, beginning checking sentences.", LogEnum.Message);
                     for (double id = 1; id <= permutations; id++)
@@ -149,25 +163,29 @@ namespace cypher.data.classes
                             }
                             // sentence is built now parse it
                             cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "DetectSentence", "Sentence Built : " + sentence, LogEnum.Debug);
-                            Parse sentenceParse = parser.DoParse(sentence);
-                            string parsedSentence = sentenceParse.Text;
-                            double parsedProb = sentenceParse.Probability;
-                            cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "DetectSentence", "Probability of this being a sentence : " + parsedProb.ToString(), LogEnum.Debug);
-                            // now put it in the database
-                            SqlCommand detectionInfo = connection.CreateCommand();
-                            detectionInfo.CommandType = CommandType.StoredProcedure;
-                            detectionInfo.CommandText = "cypher_insertDetectionInfo";
-                            SqlParameter param = new SqlParameter("@tableName", tableName);
-                            SqlParameter param1 = new SqlParameter("@text", parsedSentence);
-                            SqlParameter param2 = new SqlParameter("@prob", parsedProb);
-                            SqlParameter param3 = new SqlParameter("@ID", id);
-                            detectionInfo.Parameters.Add(param);
-                            detectionInfo.Parameters.Add(param1);
-                            detectionInfo.Parameters.Add(param2);
-                            detectionInfo.Parameters.Add(param3);
-                            connection.Open();
-                            detectionInfo.ExecuteNonQuery();
-                            connection.Close();
+                            List<string> sentences = sentenceDetector.sentDetect(sentence).ToList();
+                            List<double> probablilities = sentenceDetector.getSentenceProbabilities().ToList();
+                            foreach (string sent in sentences)
+                            {
+                                string parsedSentence = sent;
+                                double parsedProb = probablilities[sentences.IndexOf(sent)];
+                                cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "DetectSentence", "Probability of this being a sentence : " + parsedProb.ToString(), LogEnum.Debug);
+                                // now put it in the database
+                                SqlCommand detectionInfo = connection.CreateCommand();
+                                detectionInfo.CommandType = CommandType.StoredProcedure;
+                                detectionInfo.CommandText = "dbo.cypher_insertPermutationSentence";
+                                SqlParameter param1 = new SqlParameter("@messageId", tableName.Remove(0, "tblPermutations".Length));
+                                SqlParameter param2 = new SqlParameter("@permId", id);
+                                SqlParameter param3 = new SqlParameter("@content", sent);
+                                SqlParameter param4 = new SqlParameter("@prob", parsedProb);
+                                detectionInfo.Parameters.Add(param1);
+                                detectionInfo.Parameters.Add(param2);
+                                detectionInfo.Parameters.Add(param3);
+                                detectionInfo.Parameters.Add(param4);
+                                connection.Open();
+                                detectionInfo.ExecuteNonQuery();
+                                connection.Close();
+                            }
                             cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "DetectSentence", "Sentence Check Complete.", LogEnum.Debug);
                         }
                     }
@@ -183,6 +201,14 @@ namespace cypher.data.classes
                 cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "DetectSentence", x, LogEnum.Critical);
                 throw x;
             }
+            finally
+            {
+                if (connection.State != ConnectionState.Closed)
+                {
+                    connection.Close();
+                }
+            }
+
         }
 
         public static bool CheckForPermutationTable(string tableName)
@@ -201,6 +227,7 @@ namespace cypher.data.classes
                 comm.Parameters.Add(param1);
                 connection.Open();
                 comm.ExecuteNonQuery();
+                connection.Close();
                 returnValue = Convert.ToBoolean(comm.Parameters["@output"].Value);
             }
             catch (Exception x)
@@ -209,7 +236,10 @@ namespace cypher.data.classes
             }
             finally
             {
-                connection.Close();
+                if (connection.State != ConnectionState.Closed)
+                { 
+                    connection.Close(); 
+                }
             }
             return returnValue;
         }
@@ -227,6 +257,7 @@ namespace cypher.data.classes
                 cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "CheckSizeOfPermutationTable", "Checking table : " + tableName + " : " + comm.CommandText.ToString(), LogEnum.Message);
                 connection.Open();
                 object val = comm.ExecuteScalar();
+                connection.Close();
                 returnValue = Convert.ToInt32(val);
             }
             catch (Exception x)
@@ -235,7 +266,10 @@ namespace cypher.data.classes
             }
             finally
             {
-                connection.Close();
+                if (connection.State != ConnectionState.Closed)
+                {
+                    connection.Close();
+                }
             }
             return returnValue;
         }

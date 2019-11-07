@@ -268,16 +268,28 @@ namespace cypher.GUI
 
         private void miEncrypt_Click(object sender, EventArgs e)
         {
-            this.pnlDecrypt.Visible = false;
-            this.pnlEncrypt.Visible = true;
-            this.miLoad.Visible = false;
+            setFormMode(true);
         }
 
         private void miDecrypt_Click(object sender, EventArgs e)
         {
-            this.pnlEncrypt.Visible = false;
-            this.pnlDecrypt.Visible = true;
-            this.miLoad.Visible = true;
+            setFormMode(false);
+        }
+
+        private void setFormMode(bool encrypt)
+        {
+            if(encrypt)
+            {
+                this.pnlDecrypt.Visible = false;
+                this.pnlEncrypt.Visible = true;
+                this.miLoad.Visible = false;
+            }
+            else
+            {
+                this.pnlEncrypt.Visible = false;
+                this.pnlDecrypt.Visible = true;
+                this.miLoad.Visible = true;
+            }
 
         }
 
@@ -361,6 +373,8 @@ namespace cypher.GUI
                     mi.Click += smiLoad_Click;
                     miLoad.DropDownItems.Add(mi);
                 }
+                // setup the form to encrypt a message, by default
+                setFormMode(true);
             }
             catch (Exception x)
             {

@@ -14,12 +14,17 @@ namespace cypher.GUI
         cypher.data.classes.MessageWords mWords;
         BackgroundWorker bWorker = new BackgroundWorker();
         frmDialog dialog = new frmDialog(false);
+        string tableName = "";
 
         public frmDecrypted(cypher.data.classes.EncryptedMessage message)
         {
             EncMess = message;
             mWords = new data.classes.MessageWords(message);
             InitializeComponent();
+            bWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bWorker_DoWork);
+            bWorker.ProgressChanged += new ProgressChangedEventHandler(this.bWorker_ProgressChanged);
+            bWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(this.bWorker_RunWorkerCompleted);
+
         }
 
         private void frmDecrypted_Load(object sender, EventArgs e)
@@ -57,7 +62,7 @@ namespace cypher.GUI
 
         private void miSave_Click(object sender, EventArgs e)
         {
-            string tableName = "tblPermutations" + EncMess.ID.ToString();
+            tableName = "tblPermutations" + EncMess.ID.ToString();
             DialogResult result = DialogResult.Yes;
             dialog = new frmDialog(true);
             dialog.Show(this);
@@ -91,12 +96,6 @@ namespace cypher.GUI
                     bWorker.WorkerReportsProgress = true;
                     bWorker.WorkerSupportsCancellation = false;
                     bWorker.RunWorkerAsync(tableName);
-                    Log.WriteToLog(info.ProjectInfo.ProjectLogType, "miSave_Click", "All Permutations saved!", LogEnum.Debug);
-                    dialog.Close();
-                    dialogClosed = true;
-                    result = MessageBox.Show("All Permutations Saved, Continue with calculating sentence probablility?", "Finished current task...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                        CalculatePermutations(tableName);
                 }
             }
             catch (Exception x)
@@ -249,7 +248,7 @@ namespace cypher.GUI
             cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "RefreshBoxes", "End...", LogEnum.Debug);
         }
 
-        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void bWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -273,9 +272,56 @@ namespace cypher.GUI
             }
         }
 
-        private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void bWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             dialog.lblText.Text = e.UserState.ToString();
+        }
+
+        private void bWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Log.WriteToLog(info.ProjectInfo.ProjectLogType, "miSave_Click", "All Permutations saved!", LogEnum.Debug);
+            dialog.Close();
+            DialogResult result = MessageBox.Show("All Permutations Saved, Continue with calculating sentence probablility?", "Finished current task...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+                CalculatePermutations(tableName);
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                for (int x = 0; x < Boxes.Count; x++)
+                {
+                    int y = (x / Boxes.Count) * 100;
+                    bWorker.ReportProgress(y, y.ToString() + " percent complete. Saving words for Column " + x.ToString() + "...");
+                    ArrayList words = new ArrayList();
+                    cypher.data.classes.MessageWord currentWord = new data.classes.MessageWord(this.EncMess.ID, Boxes[x].WordValue);
+                    foreach (object item in currentWord.words)
+                    {
+                        words.Add((string)item);
+                    }
+                    cypher.data.classes.Decryption.FillPermutationsTable(e.Argument.ToString(), words, x, GetPermutations());
+                    Log.WriteToLog(info.ProjectInfo.ProjectLogType, "BackgroundWorker_DoWork", "All Permutations saved for column " + x.ToString(), LogEnum.Debug);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "BackgroundWorker_DoWork", ex, LogEnum.Critical);
+            }
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            dialog.lblText.Text = e.UserState.ToString();
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Log.WriteToLog(info.ProjectInfo.ProjectLogType, "miSave_Click", "All Permutations saved!", LogEnum.Debug);
+            dialog.Close();
+            DialogResult result = MessageBox.Show("All Permutations Saved, Continue with calculating sentence probablility?", "Finished current task...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+                CalculatePermutations(tableName);
         }
     }
 }
