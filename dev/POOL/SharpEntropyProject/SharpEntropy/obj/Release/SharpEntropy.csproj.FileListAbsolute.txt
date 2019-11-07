@@ -1,5 +1,0 @@
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Release\SharpEntropy.dll.config
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Release\SharpEntropy.dll
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Release\cypherinf.dll
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProject\SharpEntropy\bin\Release\cypherinf.pdb
-D:\Project Folders\~!projectsWeb\~!Working\acnicholls\dev\POOL\SharpEntropyProject\SharpEntropy\obj\Release\SharpEntropy.dll
