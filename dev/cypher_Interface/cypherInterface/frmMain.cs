@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace cypher.GUI
 {
@@ -29,6 +30,7 @@ namespace cypher.GUI
         private TextBox txtInputCode;
         private ToolStripMenuItem miLoad;
         private cypher.data.classes.Dictionary dict;
+        private frmDialog dialog = new frmDialog(false);
 
         private int messageID = 0;
 
@@ -350,23 +352,36 @@ namespace cypher.GUI
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            DataSet ds = new DataSet();
             frmDialog dialog = new frmDialog(false);
-            dialog.lblText.Text = "Loading Dictionary.  Please Wait...";
-            dialog.Show(this);
-            dict = new data.classes.Dictionary();
-            dialog.Close();
+            bool successfulLoad = false;
             try
             {
-                // now check the DB for messages and add to menu bar
-                SqlConnection conn = new SqlConnection(info.ConnectionInfo.ConnectionString);
-                SqlCommand comm = conn.CreateCommand();
-                DataSet ds = new DataSet();
-                SqlDataAdapter adap = new SqlDataAdapter(comm);
-                comm.CommandType = CommandType.Text;
-                comm.CommandText = "Select fldMessage_id from tblMessages";
-                conn.Open();
-                adap.Fill(ds);
-                conn.Close();
+                LoadDictionary();
+            }
+            catch(Exception x)
+            {
+                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "LoadDictionary", x, LogEnum.Critical);
+                MessageBox.Show(string.Format("Failed to load Dictionary...Please check config and try again.\r\n\r\n{0}", x.Message), "Error");
+                Application.Exit();
+                return;
+            }
+            try
+            {
+                ds = GetPreviousMessages();
+                successfulLoad = true;
+            }
+            catch(Exception x)
+            {
+                string message = string.Format("Something went wrong connecting to the database. \r\n\r\n Error Message:{0}", x.Message);
+                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "GetPreviousMessages", x, LogEnum.Critical);
+                MessageBox.Show(message, "Error");
+                Application.Exit();
+                return;
+            }
+            if (successfulLoad)
+            {
+                // create menu items from the database set of messages
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     ToolStripMenuItem mi = new ToolStripMenuItem(row[0].ToString());
@@ -376,10 +391,36 @@ namespace cypher.GUI
                 // setup the form to encrypt a message, by default
                 setFormMode(true);
             }
-            catch (Exception x)
-            {
-                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "frmMain_Load", x, LogEnum.Critical);
-            }
+        }
+
+         private void LoadDictionary()
+        {
+            dialog = new frmDialog(false);
+            dialog.lblText.Text = "Checking Dictionary.  Please Wait...";
+            dialog.Show(this);
+            Application.DoEvents();
+            dict = new data.classes.Dictionary();
+            Thread.Sleep(4000);
+            dialog.Close();
+        }
+
+        /// <summary>
+        /// checks the database for previously encoded messages
+        /// </summary>
+        /// <returns>Dataset with previous messages</returns>
+        private DataSet GetPreviousMessages()
+        {
+            DataSet ds = new DataSet();
+            // now check the DB for messages and add to menu bar
+            SqlConnection conn = new SqlConnection(info.ConnectionInfo.ConnectionString);
+            SqlCommand comm = conn.CreateCommand();
+            SqlDataAdapter adap = new SqlDataAdapter(comm);
+            comm.CommandType = CommandType.Text;
+            comm.CommandText = "Select fldMessage_id from tblMessages";
+            conn.Open();
+            adap.Fill(ds);
+            conn.Close();
+            return ds;
         }
 
         private void smiLoad_Click(object sender, EventArgs e)

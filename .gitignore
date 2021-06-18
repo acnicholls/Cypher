@@ -284,4 +284,6 @@ MigrationBackup/
 .ionide/
 
 # my app.config file -- can't release those into the wild.
-app.config
+**/app.config
+prod/cypher/cypher.exe.config
+prod/cypher/enable1.txt

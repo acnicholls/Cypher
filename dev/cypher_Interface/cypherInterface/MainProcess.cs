@@ -17,7 +17,7 @@ namespace cypher.GUI
 		[STAThread]
 		static void Main(string[] args) 
 		{
-				Application.Run(new frmMain(args));
+			Application.Run(new frmMain(args));
 		}
 
 	}

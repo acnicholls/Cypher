@@ -14,13 +14,13 @@ namespace cypher.data.classes
        public Dictionary()
         {
             // open the dictionary
-            ReadFile();
+            ReadFileOrDatabase();
         }
 
         /// <summary>
         /// reads the dictionary file into a table of words and corresponding integer values
         /// </summary>
-        private void ReadFile()
+        private void ReadFileOrDatabase()
         {
             try
             {
@@ -34,7 +34,7 @@ namespace cypher.data.classes
                 if ((int)numOfRows == 0)
                 {
                     string FilePath = cypher.info.AppSettings.GetAppSetting("dictionary", false);
-                    cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", FilePath, LogEnum.Debug);
+                    cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFileOrDatabase", FilePath, LogEnum.Debug);
                     // open the file
                     StreamReader sr = new StreamReader(FilePath);
                     do
@@ -44,12 +44,13 @@ namespace cypher.data.classes
                     } while (sr.Peek() != -1);
                     // close the file
                     sr.Close();
-                    cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", "File Closed", LogEnum.Debug);
+                    cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFileOrDatabase", "File Closed", LogEnum.Debug);
                 }
             }
             catch (Exception x)
             {
-                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", x, LogEnum.Critical);
+                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFileOrDatabase", x, LogEnum.Critical);
+                throw x;
             }
         }
 
@@ -63,7 +64,7 @@ namespace cypher.data.classes
             {
                 try
                 {
-                    cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", "Adding Word : " + word, LogEnum.Debug);
+                    cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "AddWordToDatabase", "Adding Word : " + word, LogEnum.Debug);
                     // pass the data to the database
                     int wordValue = CalcWordValue(word);
                     SqlCommand cypherCom = cypherCon.CreateCommand();
@@ -75,11 +76,11 @@ namespace cypher.data.classes
                     cypherCom.Parameters.Add(inputWordValue);
                     cypherCon.Open();
                     int result = cypherCom.ExecuteNonQuery();
-                    cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", "Row Added : " + word + " : " + wordValue + " : Result : " + result.ToString(), LogEnum.Debug);
+                    cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "AddWordToDatabase", "Row Added : " + word + " : " + wordValue + " : Result : " + result.ToString(), LogEnum.Debug);
                 }
                 catch (Exception x)
                 {
-                    Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", x, LogEnum.Critical);
+                    Log.WriteToLog(info.ProjectInfo.ProjectLogType, "AddWordToDatabase", x, LogEnum.Critical);
                 }
                 finally
                 {
@@ -98,7 +99,7 @@ namespace cypher.data.classes
             bool returnValue = false;
             try
             {
-                cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", "Checking Word : " + word, LogEnum.Debug);
+                cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "CheckDatabaseForWord", "Checking Word : " + word, LogEnum.Debug);
                 // pass the data to the database
                 SqlCommand cypherCom = cypherCon.CreateCommand();
                 cypherCom.CommandText = "Select count(*) from tblWords where fldWord_word='" + word + "'";
@@ -110,7 +111,7 @@ namespace cypher.data.classes
             }
             catch (Exception x)
             {
-                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", x, LogEnum.Critical);
+                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "CheckDatabaseForWord", x, LogEnum.Critical);
             }
             finally
             {
@@ -157,7 +158,7 @@ namespace cypher.data.classes
             }
             catch (Exception x)
             {
-                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFile", x, LogEnum.Critical);
+                Log.WriteToLog(info.ProjectInfo.ProjectLogType, "FindWordValue", x, LogEnum.Critical);
             }
             finally
             {
