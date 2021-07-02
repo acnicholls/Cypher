@@ -254,7 +254,6 @@ namespace cypher.GUI
 
         public void btnDecrypt_Click(object sender, EventArgs e)
         {
-            ArrayList wordValues = new ArrayList();
             string inputDecrypt = this.txtInputCode.Text.Trim();
             cypher.data.classes.EncryptedMessage mess = new data.classes.EncryptedMessage(inputDecrypt);
             mess.Save();
@@ -381,15 +380,24 @@ namespace cypher.GUI
             }
             if (successfulLoad)
             {
-                // create menu items from the database set of messages
-                foreach (DataRow row in ds.Tables[0].Rows)
-                {
-                    ToolStripMenuItem mi = new ToolStripMenuItem(row[0].ToString());
-                    mi.Click += smiLoad_Click;
-                    miLoad.DropDownItems.Add(mi);
-                }
+                LoadPreviousMessageMenuItems(false);
                 // setup the form to encrypt a message, by default
                 setFormMode(true);
+            }
+        }
+
+        private void LoadPreviousMessageMenuItems(bool clearList)
+        {
+            if(clearList)
+            {
+                miLoad.DropDownItems.Clear();
+            }
+            // create menu items from the database set of messages
+            foreach (DataRow row in GetPreviousMessages().Tables[0].Rows)
+            {
+                ToolStripMenuItem mi = new ToolStripMenuItem(row[0].ToString());
+                mi.Click += smiLoad_Click;
+                miLoad.DropDownItems.Add(mi);
             }
         }
 
