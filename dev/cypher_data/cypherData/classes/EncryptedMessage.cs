@@ -24,18 +24,18 @@ namespace cypher.data.classes
 
         public EncryptedMessage(int id)
         {
+            SqlConnection decConn = new SqlConnection(info.ConnectionInfo.ConnectionString);
             try
             {
-                SqlConnection decConn = new SqlConnection(info.ConnectionInfo.ConnectionString);
                 SqlCommand decComm = decConn.CreateCommand();
                 /// insert the message into the database
                 decComm.CommandType = CommandType.StoredProcedure;
                 decComm.CommandText = "cypher_selectMessage";
                 SqlParameter param = new SqlParameter("@id", id);
                 decComm.Parameters.Add(param);
-                decConn.Open();
                 SqlDataAdapter adap = new SqlDataAdapter(decComm);
                 DataSet ds = new DataSet();
+                decConn.Open();
                 adap.Fill(ds);
                 decConn.Close();
                 this.content = ds.Tables[0].Rows[0]["fldMessage_content"].ToString();
@@ -45,14 +45,21 @@ namespace cypher.data.classes
             {
                 cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "EncryptedMessage /w id", x, LogEnum.Critical);
             }
+            finally
+            {
+                if(decConn.State != ConnectionState.Closed)
+                {
+                    decConn.Close();
+                }
+            }
         }
         public EncryptedMessage(string content)
         {
             this.content = content;
+            SqlConnection decConn = new SqlConnection(info.ConnectionInfo.ConnectionString);
             // try to find this message in the database and pull back the ID if found
             try
             {
-                SqlConnection decConn = new SqlConnection(info.ConnectionInfo.ConnectionString);
                 SqlCommand decComm = decConn.CreateCommand();
                 /// insert the message into the database
                 decComm.CommandType = CommandType.Text;
@@ -68,15 +75,22 @@ namespace cypher.data.classes
             {
                 cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "EncryptedMessage /w content", x, LogEnum.Critical);
             }
+            finally
+            {
+                if (decConn.State != ConnectionState.Closed)
+                {
+                    decConn.Close();
+                }
+            }
         }
 
         public void Save()
         {
             // should try to take care of update here...?   
+            SqlConnection decConn = new SqlConnection(info.ConnectionInfo.ConnectionString);
             try
             {
                 // add this message to the database
-                SqlConnection decConn = new SqlConnection(info.ConnectionInfo.ConnectionString);
                 SqlCommand decComm = decConn.CreateCommand();
                 /// insert the message into the database
                 decComm.CommandType = CommandType.StoredProcedure;
@@ -101,6 +115,13 @@ namespace cypher.data.classes
             catch (Exception x)
             {
                 cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "EncryptedMessage.Save", x, LogEnum.Critical);
+            }
+            finally
+            {
+                if (decConn.State != ConnectionState.Closed)
+                {
+                    decConn.Close();
+                }
             }
         }
     }

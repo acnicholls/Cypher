@@ -52,6 +52,13 @@ namespace cypher.data.classes
                 Log.WriteToLog(info.ProjectInfo.ProjectLogType, "ReadFileOrDatabase", x, LogEnum.Critical);
                 throw x;
             }
+            finally
+            {
+                if(cypherCon.State != System.Data.ConnectionState.Closed)
+                {
+                    cypherCon.Close();
+                }
+            }
         }
 
         /// <summary>
@@ -76,6 +83,7 @@ namespace cypher.data.classes
                     cypherCom.Parameters.Add(inputWordValue);
                     cypherCon.Open();
                     int result = cypherCom.ExecuteNonQuery();
+                    cypherCon.Close();
                     cypher.Log.WriteToLog(info.ProjectInfo.ProjectLogType, "AddWordToDatabase", "Row Added : " + word + " : " + wordValue + " : Result : " + result.ToString(), LogEnum.Debug);
                 }
                 catch (Exception x)
@@ -84,7 +92,10 @@ namespace cypher.data.classes
                 }
                 finally
                 {
-                    cypherCon.Close();
+                    if (cypherCon.State != System.Data.ConnectionState.Closed)
+                    {
+                        cypherCon.Close();
+                    }
                 }
             }
         }
@@ -106,6 +117,7 @@ namespace cypher.data.classes
                 cypherCom.CommandType = System.Data.CommandType.Text;
                 cypherCon.Open();
                 object result = cypherCom.ExecuteScalar();
+                cypherCon.Close();
                 if ((int)result == 1)
                     returnValue = true;
             }
@@ -115,7 +127,10 @@ namespace cypher.data.classes
             }
             finally
             {
-                cypherCon.Close();
+                if (cypherCon.State != System.Data.ConnectionState.Closed)
+                {
+                    cypherCon.Close();
+                }
             }
             return returnValue;
         }
@@ -136,6 +151,7 @@ namespace cypher.data.classes
                 wordFind.CommandText = "select fldWord_value from tblWords where fldWord_word='" + word + "'";
                 cypherCon.Open();
                 returnValue = wordFind.ExecuteScalar();
+                cypherCon.Close();
                 if (returnValue == null)
                 {
                     DialogResult result = MessageBox.Show("The word '" + word + "' was not found.  Would you like to add it to the database? Click Cancel to return to your message.", "Word Not Found...", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
@@ -162,7 +178,10 @@ namespace cypher.data.classes
             }
             finally
             {
-                cypherCon.Close();
+                if (cypherCon.State != System.Data.ConnectionState.Closed)
+                {
+                    cypherCon.Close();
+                }
             }
             return (int)returnValue;
         }
@@ -184,6 +203,7 @@ namespace cypher.data.classes
                 wordFind.CommandText = "select * from tblWords where fldWord_value=" + value;
                 cypherCon.Open();
                 adapFind.Fill(WAV, "tblWords");
+                cypherCon.Close();
                 foreach (cypher.data.datasets.WordsAndValues.tblWordsRow row in WAV.tblWords)
                 {
                     if (Convert.ToInt16(row["fldWord_value"]) == value)
@@ -201,7 +221,10 @@ namespace cypher.data.classes
             }
             finally
             {
-                cypherCon.Close();
+                if (cypherCon.State != System.Data.ConnectionState.Closed)
+                {
+                    cypherCon.Close();
+                }
             }
             return returnValue;
         }

@@ -31,6 +31,7 @@ namespace cypher.data.classes
                 DataSet ds = new DataSet();
                 wordCon.Open();
                 adap.Fill(ds);
+                wordCon.Close();
                 // fill the listbox with the values from the database
                 words.Clear();
                 foreach (DataRow row in ds.Tables[0].Rows)
@@ -44,7 +45,10 @@ namespace cypher.data.classes
             }
             finally
             {
-                wordCon.Close();
+                if (wordCon.State != ConnectionState.Closed)
+                {
+                    wordCon.Close();
+                }
             }
         }
     }
