@@ -154,7 +154,7 @@ namespace cypher.GUI
             double returnValue = 1;
             foreach (int i in items)
             {
-                returnValue = returnValue * i;
+                returnValue *= i;
             }
             Log.WriteToLog(info.ProjectInfo.ProjectLogType, "GetPermutations", "Number of permutations " + returnValue.ToString(), LogEnum.Debug);
             return returnValue;
