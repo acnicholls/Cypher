@@ -257,7 +257,7 @@ namespace cypher.GUI
             string inputDecrypt = this.txtInputCode.Text.Trim();
             cypher.data.classes.EncryptedMessage mess = new data.classes.EncryptedMessage(inputDecrypt);
             mess.Save();
-
+            LoadPreviousMessageMenuItems(true);
             frmDecrypted dec = new frmDecrypted(mess);
             dec.ShowDialog(this);
         }
